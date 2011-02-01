@@ -11,16 +11,11 @@ class TopicAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('text', 'topic', 'sort_order', 'created_by',
-                    'created_on', 'updated_by', 'updated_on', 'status',
-                    'protected')
-    list_filter = ('language', )
-    search_fields = ['text', 'answer']
+    list_display = ('question', 'language', 'topic', 'sort_order', 'created_by',
+                    'created_on', 'updated_by', 'updated_on', 'status', )
+    list_filter = ('language', 'status',)
+    search_fields = ['question', 'answer']
     date_hierarchy = 'created_on'
-
-    class Meta:
-        model = Question
-
 
     def save_model(self, request, obj, form, change):
         '''

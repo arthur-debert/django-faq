@@ -67,7 +67,7 @@ class Question(models.Model):
                             help_text=_("This is a unique identifier that allows your questions to" \
                                         "display its detail view, ex 'how-can-i-contribute'."))
     topic = models.ForeignKey(Topic, verbose_name=_("Topic"), blank=True, null=True)
-    text = models.TextField(_('Question'), help_text=_("The actual question itself."))
+    question = models.TextField(_('Question'), help_text=_("The actual question itself."))
     answer = models.TextField(_('Answer'), help_text=_("The answer text."))
     status = models.IntegerField(choices=enums.QUESTION_STATUS_CHOICES,
                                  default=enums.STATUS_INACTIVE,
