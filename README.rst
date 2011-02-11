@@ -20,11 +20,11 @@ Features
 - For every question, five similar questions are calculated and cached (this feature still has to be reviewed) ;
 
 - There is a SubmitFAQForm defined that you can use to allow site
-visitors to submit new questions and/or answers to the site
-administrator for consideration. All submitted questions are added as
-"inactive" and so it is up to the administrator to edit, activate or
-discard the question as well as set its' sort_order field and slug to
-reasonable values.
+  visitors to submit new questions and/or answers to the site
+  administrator for consideration. All submitted questions are added as
+  "inactive" and so it is up to the administrator to edit, activate or
+  discard the question as well as set its' sort_order field and slug to
+  reasonable values.
 
 
 Installation
