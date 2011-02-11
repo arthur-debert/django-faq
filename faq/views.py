@@ -39,8 +39,11 @@ def question_list(request, template_name='faq/question_list.html',
     query_set = Question.objects.active(group=group, 
                                         user=request.user).filter(language=request.LANGUAGE_CODE)
 
-    last_update = query_set.values('updated_on').order_by('-updated_on', )[0]
-    extra = {'updated_on': last_update['updated_on']}
+    try:
+        last_update = query_set.values('updated_on').order_by('-updated_on')[0]
+        extra = {'updated_on': last_update[0]['updated_on']}
+    except IndexError:
+        extra = {}
     extra.update(extra_context)
 
     return object_list(request,
