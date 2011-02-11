@@ -13,20 +13,26 @@
 	<li>
 		<a href="#{{ question.slug }}">{% autoescape off %}{{ question.text }}{% endautoescape %}</a>
 	</li>
+    {% empty %}
+    <li> 
+        {% blocktrans %}No questions available.{% endblocktrans %}
+    </li>
 	{% endfor %}
 </ol>
 
-<hr/>
-<h3 style="margin-top: 50px">{% trans "Answers" %}</h3>
-<ol style="margin-bottom: 800px">
-	{% for question in object_list %}
-	<li>
-		<a id="{{ question.slug }}">
-		{% autoescape off %}
-		<h3>{{ question.text }}</h3>
-		<p>{{ question.answer }}</p>
-		{% endautoescape %}
-	</li>
-	{% endfor %}
-</ol>
+{% if object_lst %}
+    <hr/>
+    <h3 style="margin-top: 50px">{% trans "Answers" %}</h3>
+    <ol style="margin-bottom: 800px">
+        {% for question in object_list %}
+        <li>
+            <a id="{{ question.slug }}">
+            {% autoescape off %}
+            <h3>{{ question.text }}</h3>
+            <p>{{ question.answer }}</p>
+            {% endautoescape %}
+        </li>
+        {% endfor %}
+    </ol>
+{% endif %}
 {% endblock %}
