@@ -18,16 +18,13 @@ class QuestionAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_on'
 
     def save_model(self, request, obj, form, change):
-        '''
-        Overrided because I want to also set who created this instance.
-        '''
-        instance = form.save(commit=False)
-        if instance.id is None:
-            new = True
-            instance.created_by = request.user
-        instance.updated_by = request.user
-        instance.save()
-        return instance
+        """ 
+        Save the question's author.
+        """
+        if not change:
+            obj.created_by = request.user
+        obj.updated_by = request.user
+        obj.save()
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Topic, TopicAdmin)
