@@ -1,84 +1,222 @@
-#, fuzzy
+#
+# Jannis Leidel <jannis@leidel.info>, 2011.
+# jnns <jnns@gmx.com>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: PACKAGE-VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-16 13:24+0100\n"
-"PO-Revision-Date: 2008-12-16 13:17+0100\n"
-"Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
-"Language-Team: German <de@un.int>\n"
+"POT-Creation-Date: 2011-02-11 14:49+0100\n"
+"PO-Revision-Date: 2011-02-11 14:49+0100\n"
+"Last-Translator: jnns <jnns@gmx.com>\n"
+"Language-Team: German < >\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding:  \n"
 
-#: enums.py:10
+#: enums.py:11
 msgid "Active"
 msgstr "Aktiv"
 
-#: enums.py:11
+#: enums.py:12
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: models.py:12
-msgid "created by"
-msgstr "Autor"
+#: enums.py:13
+msgid "Group Header"
+msgstr "Gruppenüberschrift"
 
-#: models.py:13
+#: forms.py:20 models.py:71
+msgid "Answer"
+msgstr "Antwort"
+
+#: forms.py:30
+msgid "No answer for this FAQ is available at this time."
+msgstr "Zur Zeit existiert keine Antwort auf diese Frage."
+
+#: models.py:19 models.py:69
+msgid "Topic"
+msgstr "Thema"
+
+#: models.py:20
+msgid "Topics"
+msgstr "Themen"
+
+#: models.py:25 models.py:65
+msgid "Language"
+msgstr "Sprache"
+
+#: models.py:26
+msgid "Name"
+msgstr "Name"
+
+#: models.py:27
+msgid "Slug"
+msgstr "Eindeutiger, interner Bezeichner"
+
+#: models.py:28 models.py:78
+msgid "sort order"
+msgstr "Reihenfolge"
+
+#: models.py:29
+msgid "The order you would like the topic to be displayed."
+msgstr "Die Reihenfolge, in der die Fragen dargestellt werden soll."
+
+#: models.py:50 models.py:70 templates/faq/question_detail.html:4
+msgid "Question"
+msgstr "Frage"
+
+#: models.py:51 templates/faq/faq_list.html:10
+#: templates/faq/faq_list_by_group.html:11 templates/faq/question_list.html:8
+msgid "Questions"
+msgstr "Fragen"
+
+#: models.py:57
 msgid "created on"
 msgstr "Erstellt"
 
-#: models.py:14
+#: models.py:60
 msgid "updated on"
 msgstr "Aktualisiert"
 
-#: models.py:15
-msgid "updated by"
-msgstr "Aktualisiert von"
-
-#: models.py:24
-msgid "slug"
-msgstr "Kürzel"
-
-#: models.py:24
+#: models.py:67
+#, fuzzy
 msgid ""
-"This is a unique identifier that allows your questions to display its detail "
-"view, ex 'how-can-i-contribute'"
+"This is a unique identifier that allows your questions todisplay its detail "
+"view, ex 'how-can-i-contribute'."
 msgstr ""
 "Das ist ein eindeutiges Kürzel, das in der URL bei der Detaildarstellung von "
-"Fragen benutzt wird, z.B. 'how-can-i-contribute'"
+"Fragen benutzt wird, z.B. 'wie-ubersetze-ich-eintrage'"
 
-#: models.py:25 models.py:33
-msgid "question"
-msgstr "Frage"
-
-#: models.py:25
+#: models.py:70
 msgid "The actual question itself."
 msgstr "Die eigentliche Frage."
 
-#: models.py:26
-msgid "answer"
-msgstr "Frage"
-
-#: models.py:26
+#: models.py:71
 msgid "The answer text."
 msgstr "Der Antworttext."
 
-#: models.py:27
-msgid "status"
-msgstr "Status"
+#: models.py:74
+msgid ""
+"Only questions with their status set to 'Active' will bedisplayed. Questions "
+"marked as 'Group Header' are treated as such by views and templates that are "
+"set up to use them."
+msgstr ""
+"Nur Fragen, deren Status \"Aktiv\" ist, werden angezeigt. Fragen mit Status "
+"\"Gruppenüberschrift\" werden als solche behandelt, sofern das verwendete "
+"Template dies unterstützt."
 
-#: models.py:27
-msgid "Only questions with their status set to 'Active' will be displayed."
-msgstr "Nur Fragen mit dem Status 'Aktiv ' werden angezeigt."
-
-#: models.py:28
-msgid "sort order"
-msgstr "Position"
-
-#: models.py:28
+#: models.py:79
 msgid "The order you would like the question to be displayed."
 msgstr "Die Reihenfolge in der die Fragen dargestellt werden soll."
 
-#: models.py:34
-msgid "questions"
-msgstr "Fragen"
+#: models.py:80
+msgid "Authentication needed?"
+msgstr "Anmeldung erforderlich?"
+
+#: models.py:80
+msgid "Set true if this question is only visible by authenticated users."
+msgstr ""
+"Falls diese Option gesetzt ist, wird die Frage nur für angemeldeten Benutzer "
+"sichtbar sein. "
+
+#: views.py:63
+msgid "FAQs"
+msgstr "FAQs"
+
+#: views.py:72
+msgid "Grouped FAQs"
+msgstr "Gruppierte FAQs"
+
+#: views.py:105
+msgid ""
+"Your question was submitted and will be reviewed by the site administrator "
+"for possible inclusion in the FAQ."
+msgstr ""
+"Die Frage wurde abgeschickt und wird demnächst von einem Administrator "
+"gesichtet."
+
+#: templates/faq/faq_list.html:8 templates/faq/faq_list_by_group.html:10
+#: templates/faq/faq_list_by_group.html:38 templates/faq/question_list.html:6
+#, python-format
+msgid "Last updated on: %(updated_on)s"
+msgstr "Letzte Aktualisierung am: %(updated_on)s"
+
+#: templates/faq/faq_list.html:18
+msgid "No questions available."
+msgstr "Keine Fragen vorhanden."
+
+#: templates/faq/faq_list.html:25 templates/faq/faq_list_by_group.html:26
+msgid "Answers"
+msgstr "Antworten"
+
+#: templates/faq/faq_list_by_group.html:4
+msgid "Frequently Asked Questions"
+msgstr "Häufig gestellte Fragen"
+
+#: templates/faq/faq_list_by_group.html:15
+#: templates/faq/faq_list_by_group.html:30
+msgid "General"
+msgstr "Allgemein"
+
+#: templates/faq/faq_list_by_group.html:44
+msgid "No questions available"
+msgstr "Keine Fragen vorhanden"
+
+#: templates/faq/question_list.html:13
+msgid "answer"
+msgstr "Antwort"
+
+#: templates/faq/submit_question.html:4
+msgid "Add Question"
+msgstr "Frage hinzufügen"
+
+#: templates/faq/submit_question.html:7
+msgid "Submit Question"
+msgstr "Frage vorschlagen"
+
+#: templates/faq/submit_question.html:9
+msgid ""
+"Use this form to submit a question (and optionally a corresponding answer) "
+"that you would like to see added to the FAQs on this site."
+msgstr ""
+"Benutzen Sie dieses Formular, um eine Frage (oder auch eine passende "
+"Antwort) für die Aufnahme in die Liste vorzuschlagen."
+
+#: templates/faq/submit_question.html:14
+msgid "Submit"
+msgstr "Vorschlagen"
+
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
+#~ msgid "question"
+#~ msgstr "Frage"
+
+#~ msgid "Example"
+#~ msgstr "Beispiel"
+
+#~ msgid ""
+#~ "\n"
+#~ "                <h4>%(question_topic)s</h4>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "                <h4>%(question_topic)s</h4>\n"
+#~ "            "
+
+#~ msgid "created by"
+#~ msgstr "Autor"
+
+#~ msgid "updated by"
+#~ msgstr "Aktualisiert von"
+
+#~ msgid "slug"
+#~ msgstr "Kürzel"
+
+#~ msgid "status"
+#~ msgstr "Status"
+
+#~ msgid "Only questions with their status set to 'Active' will be displayed."
+#~ msgstr "Nur Fragen mit dem Status 'Aktiv ' werden angezeigt."
