@@ -41,7 +41,7 @@ def question_list(request, template_name='faq/question_list.html',
 
     try:
         last_update = query_set.values('updated_on').order_by('-updated_on')[0]
-        extra = {'updated_on': last_update[0]['updated_on']}
+        extra = {'updated_on': last_update['updated_on']}
     except IndexError:
         extra = {}
     extra.update(extra_context)
@@ -88,7 +88,7 @@ def submit_faq(request, form_class=SubmitFaqForm,
 
             # Generate slug
             now = datetime.now()
-            question.slug = "%s-%d-%d-%d-%d-%d-%d" % (request.user.username,
+            question.slug = "%s_%d-%d-%d-%d-%d-%d" % (question.text,
                                                       now.year, now.month, now.day,
                                                       now.hour, now.minute,
                                                       now.second)
@@ -101,10 +101,9 @@ def submit_faq(request, form_class=SubmitFaqForm,
             question.save()
 
             # Now set up a confirmation message for the user
-            messages.success(request,
-                             _(u"Your question was submitted and will be reviewed by the site administrator for possible inclusion in the FAQ.")
-                             )
-
+            messages.success(request, _(u"""Your question was submitted and 
+                will be reviewed by the site administrator for possible 
+                inclusion in the FAQ."""))
 
             return HttpResponseRedirect(success_url)
     else:
