@@ -1,14 +1,14 @@
 from datetime import datetime
-import simplejson as json
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils import simplejson as json
 
 import enums
-from .managers import QuestionManager
-from .relations import find_related_questions
+from managers import QuestionManager
+from relations import find_related_questions
 
 
 
@@ -116,4 +116,4 @@ class Question(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('faq:question-detail', (self.slug, ))
+        return ('question-detail', (), {'slug': self.slug})

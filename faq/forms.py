@@ -1,24 +1,26 @@
-"""
-Here we define a form for allowing site users to submit
-a potential FAQ that they would like to see added.
-
-From the user's perspective the question is not added automatically,
-but actually it is, only it is added as inactive.
-"""
-
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
-from faq.models import Question
+from models import Question
 
-class SubmitFaqForm(forms.ModelForm):
-	class Meta:
-		model = Question
-		fields = ('topic', 'question',)
-	
-	def __init__(self, language, *args, **kwargs):
-		super(SubmitFaqForm, self).__init__(*args, **kwargs)
-		self.fields['topic'].queryset = self.fields['topic'].queryset \
-										.filter(language=language)
+class QuestionProposeForm(forms.ModelForm):
+    """
+    This form gives users the ability to propose own questions to be added to
+    the list of frequently asked questions.
+    """
 
-
+    class Meta:
+        model = Question
+        fields = ('topic', 'question',)
+    
+    def __init__(self, *args, **kwargs):
+        """ 
+        Try to get the user's language from the middleware and only display
+        those topics that conform to that language 
+        """
+        language = kwargs.pop("language", None)
+        super(QuestionProposeForm, self).__init__(*args, **kwargs)
+        self.fields['topic'].queryset = self.fields['topic'].queryset \
+                                        .filter(language=language)
+        # don't display the help texts
+        for field in self.fields.values():
+            field.help_text = None

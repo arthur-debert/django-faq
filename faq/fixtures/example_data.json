@@ -22,7 +22,7 @@
     "fields": {
         "status": 2,
         "updated_by": 1,
-        "text": "Introduction",
+        "question": "Introduction",
         "created_by": 1,
         "topic": null,
         "created_on": "2008-11-06 12:41:27",
@@ -39,7 +39,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "What is the purpose of the django-faq app?",
+        "question": "What is the purpose of the django-faq app?",
         "created_by": 1,
         "topic": 1,
         "created_on": "2008-11-06 12:55:34",
@@ -56,7 +56,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "What new features are included in the latest release?",
+        "question": "What new features are included in the latest release?",
         "created_by": 1,
         "topic": 2,
         "created_on": "2008-11-06 12:59:02",
@@ -73,7 +73,7 @@
     "fields": {
         "status": 2,
         "updated_by": 1,
-        "text": "Installation",
+        "question": "Installation",
         "created_by": 1,
         "topic": 1,
         "created_on": "2008-11-06 12:41:04",
@@ -90,7 +90,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "What is the recommended way to install this application?",
+        "question": "What is the recommended way to install this application?",
         "created_by": 1,
         "topic": 1,
         "created_on": "2008-11-06 13:04:21",
@@ -107,7 +107,7 @@
     "fields": {
         "status": 2,
         "updated_by": 1,
-        "text": "Typical Use",
+        "question": "Typical Use",
         "created_by": 1,
         "topic": 2,
         "created_on": "2008-11-06 12:42:27",
@@ -124,7 +124,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "Does this app support the standard look and feel whereby Questions are listed at the top of a file with links to the Answers at the bottom of the same file?",
+        "question": "Does this app support the standard look and feel whereby Questions are listed at the top of a file with links to the Answers at the bottom of the same file?",
         "created_by": 1,
         "topic": 1,
         "created_on": "2008-11-06 13:15:07",
@@ -141,7 +141,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "Does this app support FAQs that have questions grouped by subtopic? If so, how does that work?",
+        "question": "Does this app support FAQs that have questions grouped by subtopic? If so, how does that work?",
         "created_by": 1,
         "topic": 1,
         "created_on": "2008-11-06 13:31:50",
@@ -158,7 +158,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "How do I add a question and answer to the FAQ?",
+        "question": "How do I add a question and answer to the FAQ?",
         "created_by": 1,
         "topic": null,
         "created_on": "2008-11-12 11:59:39",
@@ -175,7 +175,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "I want my users to be able to submit a question for possible inclusion in this FAQ. Is there support for that functionality?",
+        "question": "I want my users to be able to submit a question for possible inclusion in this FAQ. Is there support for that functionality?",
         "created_by": 1,
         "topic": null,
         "created_on": "2008-11-15 14:43:05",
@@ -192,7 +192,7 @@
     "fields": {
         "status": 1,
         "updated_by": 1,
-        "text": "Does the form for submitting FAQs work?",
+        "question": "Does the form for submitting FAQs work?",
         "created_by": null,
         "topic": null,
         "created_on": "2008-11-16 07:34:04",

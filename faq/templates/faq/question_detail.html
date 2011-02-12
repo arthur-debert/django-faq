@@ -1,25 +1,20 @@
 {% extends "faq/base.html" %}
 {% load i18n %}
 
-{% block title %}{{ block.super }}: {% trans "Question" %} - {{ object.text|truncatewords:30}}{% endblock %}
+{% block title %}{{ block.super }}: {% trans "Question" %} - {{ question.question|truncatewords:30}}{% endblock %}
 
 {% block content %}
 
-<h3>Faq &raquo; Question</h3>
+<div id="faq">
+    <h1>{% trans "Frequently Asked Questions" %}</h1>
 
-<p>
-Q: {{ object.text }}
-</p>
+    <p><a href="{% url question-list %}">{% trans "Back" %}</a></p>
 
-<p>
-A: {{ object.answer }}
-</p>
+    <h3>{{ question.question }}</h3>
 
-<h4>Related questions</h4>
-<ul>
-{% for question in object.related %}
-<li><a href="{{ question.get_absolute_url }}">{{ question.text|truncatewords:30 }}</a></li>
-{% endfor %}
-</ul>
-
+    <p class="answer">
+        {{ question.answer }}
+        <p class="updated_on">Last update on: {{question.updated_on|date:"DATETIME_FORMAT" }}</p>
+    </p>
+</div>
 {% endblock %}

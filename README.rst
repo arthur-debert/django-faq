@@ -1,30 +1,34 @@
-Django-FAQ
-=================
+django-faq
+==========
 
-This is a simple faq application for your Django powered site.
-This app follows several "best practices" for reusable apps by
-allowing for template overrides and extra_context arguments and such.
+This is a simple FAQ [#]_ application for your Django powered site which
+follows several "best practices" for reusable apps and thus is very easy and
+flexible in its integration.
+
+.. [#] Frequently Asked Questions
 
 Features
-===================
+========
+
+- Questions can be grouped into topics
+
+- Questions can be hidden from non-authenticated users
 
 - Question Headers can be created that can be used to group related
-  questions into sections ;
+  questions into sections
 
-- Questions can be "protected" in which case they are only presented
-  to authenticated users ;
+- You can define a sort order for questions and topics
 
-- Questions are linked to the current locale of the user, so you can
-  have multiple FAQs on your website ;
+- Questions are (optionally) linked to the current locale of the user, so you can
+  have multiple FAQ on your website, depending on the language.
 
-- For every question, five similar questions are calculated and cached (this feature still has to be reviewed) ;
+  This feature uses Django's *LocaleMiddleware*
 
-- There is a SubmitFAQForm defined that you can use to allow site
-  visitors to submit new questions and/or answers to the site
-  administrator for consideration. All submitted questions are added as
-  "inactive" and so it is up to the administrator to edit, activate or
-  discard the question as well as set its' sort_order field and slug to
-  reasonable values.
+- For every question, five similar questions are calculated and cached (this
+  feature still has to be reviewed) ;
+
+- There is a form defined that you can use to allow site visitors to submit new
+  questions and/or answers to the site administrator for consideration.
 
 
 Installation
@@ -76,14 +80,26 @@ your system has sqlite3 available - it is set as the default database in
 
 There is a stand-alone example site in the projects/example directory. to try it out:
 
-1. Install django-faq as per the Installation section above.
+1. Install *django-faq* as per the Installation section above.
 
-2. Execute ``./manage.py syncdb`` (This assumes that *sqlite3* is available as it is set as the default database with the ``DATABASE_NAME = 'django-faq.db'``.)
+2. Execute ``./manage.py syncdb`` (This assumes that *sqlite3* is available as
+   it is set as the default database with the ``DATABASE_NAME =
+   'django-faq.db'``.)
 
-3. If you'd like to load some example data then execute ``./manage.py loaddata example_data.json``
+3. If you'd like to load some example data then execute ``./manage.py loaddata
+   example_data.json``
 
-4. Execute ``./manage.py runserver`` and you will have the example site up and running. The home page will have links to get to the available views as well as to the admin.
+4. Execute ``./manage.py runserver`` and you will have the example site up and
+   running. The home page will have links to get to the available views as well
+   as to the admin.
 
-5. After logging into the admin you will notice an additional question appears in the FAQ. That question is "protected" and therefore not presented to non-authenticated users.
+5. The capability to submit an FAQ is available and works whether or not you
+   are a logged in user. Note that a staff member will have to use the admin
+   and review any submitted FAQ and clean them up and set them to active
+   before they are viewable by the end user views.
 
-6. The capability to submit an FAQ is available and works whether or not you are a logged in user. Note that a staff member will have to use the admin and review any submitted FAQs and clean them up and set them to active before they are viewable by the end user views.
+Requirements
+============
+
+As this application makes use of class based generic views, it is dependent on
+*Django 1.3*

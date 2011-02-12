@@ -1,61 +1,56 @@
 <html>
 <head>
-<style type="text/css">
-    html * { padding:0; margin:0; }
-    body * { padding:10px 20px; }
-    body * * { padding:0; }
-    body { font:small sans-serif; }
-    body>div { border-bottom:1px solid #ddd; }
-    h1 { font-weight:normal; }
-    h2 { margin-bottom:.8em; }
-    h2 span { font-size:80%; color:#666; font-weight:normal; }
-    h3 { margin:1em 0 .5em 0; }
-    h4 { margin:0 0 .5em 0; font-weight: normal; }
-    dd { padding-left: 2em; margin-bottom: .3em;}
-    ul,ol { margin-left: 2em; margin-top: 1em; }
-    #summary { background: #e0ebff; }
-    #summary h2 { font-weight: normal; color: #666; }
-    #explanation { background:#eee; }
-    #instructions { background:#f6f6f6; }
-    #summary table { border:none; background:transparent; }
-</style>
-
-<title>django-faq example</title>
+    <!-- 
+    Stylesheet copied from 
+        django.views.debug.EMPTY_URLCONF_TEMPLATE 
+    -->
+    <style type="text/css">
+        html * { padding:0; margin:0; }
+        body * { padding:10px 20px; }
+        body * * { padding:0; }
+        body { font:small sans-serif; }
+        body>div { border-bottom:1px solid #ddd; }
+        h1 { font-weight:normal; }
+        h2 { margin-bottom:.8em; }
+        h2 span { font-size:80%; color:#666; font-weight:normal; }
+        h3 { margin:1em 0 .5em 0; }
+        h4 { margin:0 0 .5em 0; font-weight: normal; }
+        dd { padding-left: 2em; margin-bottom: .3em;}
+        ul,ol { margin-left: 2em; margin-top: 1em; }
+        #summary { background: #e0ebff; }
+        #summary h2 { font-weight: normal; color: #666; }
+        #explanation { background:#eee; }
+        #instructions { background:#f6f6f6; }
+        #summary table { border:none; background:transparent; }
+        #instructions a { font-size: 1.2em; text-decoration: none; color: #666; margin-right: 2em;  }
+        #faq h2 { margin: 1em 0 0 1.4em;}
+        .updated_on { font-size: .8em; line-height: 2em; color: #666;}
+    </style>
+    <title>{% block title %}django-faq example{% endblock %}</title>
 </head>
 
 <body>
+    <div id="summary">
+        <h1>django-faq</h1>
+        <h2>Welcome to the django-faq Example Project</h2>
+    </div>
 
+    <div id="instructions">
+        <a href="{% url question-list %}/">List FAQ</a> 
+        <a href="{% url question-create %}">Submit FAQ</a>
+        <a href="/admin/faq/">Admin</a>
+    </div>
 
-<div id="summary">
-    <h1>django-faq</h1>
-    <h2>Welcome to the django-faq Example Project</h2>
-
-</div>
-<div id="instructions">
-    <h2>Here are some options to try:</h2>
-    <dl>
-        <dt>The <a href="/grouped_faq/">'Grouped' FAQ</a><dt>
-        <dd>This page uses the faq_list_by_group view.</dd>
-        <dt>The <a href="/faq/">'Ungrouped' FAQ</a><dt>
-        <dd>This page uses the faq_list view.</dd>
-        <dt>The <a href="/raw_faq/">'Raw' FAQ</a><dt>
-        <dd>This page uses the question_list view. It is intended for site testers. (Note that answers for this view are not autoescaped.)</dd>
-        <dt>The <a href="/submit_faq/">FAQ Submission Form</a><dt>
-        <dd>This page is an example of a form that allows a site visitor to submit an FAQ for possible future inclusion in the FAQs.</dd>
-
-        <dt>The <a href="/admin/">Django admin</a><dt>
-        <dd>Remember that you have to clean up submitted questions in the admin before the will be visible in the FAQ.</dd>
-    </dl>
-</div>
-
-{% block content %}
-<div id="explanation">
-    <h2>Having problems?</h2>
-    <ul>
-        <li>Did you run <code>./manage syncdb</code>?</li>
-    </ul>
-</div>
-{% endblock %}
+    <div id="explanation">
+    {% block content %}
+        <h2>Having problems?</h2>
+        <ul>
+            <li>Did you run <code>./manage syncdb</code>?</li>
+            <li>Remember: Newly submitted questions are set to 'proposed' and are
+            therefore not displayed until they get activated.</li>
+        </ul>
+    {% endblock %}
+    </div>
 </body>
 
 </html>

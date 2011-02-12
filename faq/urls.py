@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, url
 
-import views
+from views import QuestionListView, QuestionDetailView, QuestionCreateView
 
 urlpatterns = patterns('',
-    url(r'^$', views.faq_list_by_group, name='faq'),
-    url(r'^question/(?P<question_slug>[-\w]+)$', views.question_detail, name='question-detail'),
-    url(r'^submit$', views.submit_faq, name='submit'),
+    url(r'^$', QuestionListView.as_view(), name="question-list"),
+    url(r'^(?P<slug>[-\w]+)/$', QuestionDetailView.as_view(), name="question-detail"),
+    url(r'^propose$', QuestionCreateView.as_view(), name="question-create"),
 )

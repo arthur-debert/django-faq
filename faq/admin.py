@@ -15,6 +15,7 @@ class QuestionAdmin(admin.ModelAdmin):
                     'created_on', 'updated_by', 'updated_on', 'status', )
     list_filter = ('language', 'status',)
     search_fields = ['question', 'answer']
+    prepopulated_fields = {'slug': ('question', )}
     date_hierarchy = 'created_on'
 
     def save_model(self, request, obj, form, change):

@@ -1,5 +1,5 @@
 # Django settings for [name] project.
-import os, os.path, sys
+import os, os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -48,12 +48,12 @@ SECRET_KEY = 'c#zi(mv^n+4te_sy$hpb*zdo7#f7ccmp9ro84yz9bmmfqj9y*c'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.media',
 )
 
