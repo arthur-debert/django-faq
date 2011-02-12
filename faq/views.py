@@ -10,8 +10,20 @@ from forms import QuestionProposeForm
 class QuestionListView(ListView):
     model = Question
     context_object_name = "question_list"
+    queryset = Question.objects.active()
+
+    def get_query_set(self):
+        """ 
+        Only show protected questions when user is logged in
+        """
+        if not self.request.user:
+            return self.queryset.exclude(protected=True)
+        return self.queryset
 
     def get_context_data(self, **kwargs):
+        """ 
+        Add a few infos to the template's context
+        """
         context = super(QuestionListView, self).get_context_data(**kwargs)
 
         # get timestamp of latest update of all displayed questions
@@ -28,6 +40,7 @@ class QuestionListView(ListView):
 class QuestionDetailView(DetailView):
     model = Question
     context_object_name = "question"
+    queryset = Question.objects.active()
 
 
 class QuestionCreateView(CreateView):

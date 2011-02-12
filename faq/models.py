@@ -7,8 +7,24 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import simplejson as json
 
 import enums
-from managers import QuestionManager
 from relations import find_related_questions
+
+class QuestionManager(models.Manager):
+    """
+    This manager provides additional methods to filter by status.
+    """
+
+    def active(self):
+        return super(QuestionManager, self).get_query_set().filter(
+                status=enums.STATUS_ACTIVE)
+
+    def inactive(self):
+        return super(QuestionManager, self).get_query_set().filter(
+                status=enums.STATUS_ACTIVE)
+    
+    def proposed(self):
+        return super(QuestionManager, self).get_query_set().filter(
+                status=enums.STATUS_PROPOSED)
 
 
 
@@ -16,6 +32,7 @@ class Topic(models.Model):
     """
     Generic Topics for FAQ question grouping
     """
+
     class Meta:
         verbose_name = _("Topic")
         verbose_name_plural = _("Topics")
@@ -45,12 +62,13 @@ class Question(models.Model):
     """
     Represents a frequently asked question.
     """
-    objects = QuestionManager()
 
     class Meta:
         verbose_name = _("Question")
         verbose_name_plural = _("Questions")
         ordering = ('topic', 'sort_order', 'created_on')
+
+    objects = QuestionManager()
 
     # Creation
     created_by = models.ForeignKey(User, null=True, editable=False,
