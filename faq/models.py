@@ -22,12 +22,12 @@ class Topic(models.Model):
         ordering = ('sort_order', 'name')
 
     language = models.CharField(blank=False, max_length=5,
-                                choices=settings.LANGUAGES,
-                                verbose_name=_('Language'))
+                    choices=[(l[0], _(l[1])) for l in settings.LANGUAGES],
+                    verbose_name=_('Language'))
     name = models.CharField(_("Name"), max_length=150)
     slug = models.SlugField(_("Slug"), max_length=150, unique=True)
     sort_order = models.IntegerField(_("sort order"), default=0,
-                     help_text=_("The order you would like the topic to be displayed."))
+                    help_text=_("The order you would like the topic to be displayed."))
 
     def __unicode__(self):
         return self.name
@@ -62,8 +62,8 @@ class Question(models.Model):
     updated_by = models.ForeignKey(User, null=True, editable=False)
 
     language = models.CharField(blank=False, max_length=5,
-                                choices=settings.LANGUAGES,
-                                verbose_name=_(u"Language"))
+                    choices=[(l[0], _(l[1])) for l in settings.LANGUAGES],
+                    verbose_name=_(u"Language"))
     slug = models.SlugField(max_length=100, unique=True,
                             help_text=_("This is a unique identifier that allows your questions to" \
                                         "display its detail view, ex 'how-can-i-contribute'."))
@@ -89,7 +89,7 @@ class Question(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.created_on = datetime.now()
-            
+
         self.updated_on = datetime.now()
         super(Question, self).save(*args, **kwargs)
 
@@ -103,7 +103,7 @@ class Question(models.Model):
     def related(self):
         """
         Returns a list with the 5 most 'similar' Questions.
-        
+
         This uses uses related_cache and can quite time consuming if no cached data exists.
         """
         if not self.related_cache:

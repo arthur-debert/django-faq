@@ -31,25 +31,25 @@ Installation
 ============
 
 1. add 'faq' directory to your Python path.
-2. Make sure you have the Localization middleware in your MIDDLEWARE_CLASSES
+2. Make sure you have the Localization middleware in your MIDDLEWARE_CLASSES::
 
-	MIDDLEWARE_CLASSES = (
-	    ...
-	    'django.middleware.locale.LocaleMiddleware',
-	    ...
-	)
+    MIDDLEWARE_CLASSES = (
+        ...
+        'django.middleware.locale.LocaleMiddleware',
+        ...
+    )
 
-2. add 'faq' to your INSTALLED_APPS tuple found in your settings file.
+2. add 'faq' to your INSTALLED_APPS tuple found in your settings file::
 
-	INSTALLED_APPS = (
-	    ...
-	    'faq',
-	    ...
-	)
+    INSTALLED_APPS = (
+        ...
+        'faq',
+        ...
+    )
 
-3. Run syncdb to create the tables
+3. Run ``./manage syncdb`` to create the tables
 
-4. If you want to customize the templates then either create a 'faq'
+4. If you want to customize the templates then either create an 'faq'
    directory in your projects templates location, or you can also pass along
    custom 'template_name' arguments by creating your own view wrappers around
    the 'faq' app views. I show how to do the latter in the 'example' project
@@ -60,61 +60,30 @@ Installation
 Example Site
 ============
 
-The example app now has a convenient home page that appears as the
-default page. It has links to the available views. The pinax_example
-app comes up in the manner of a normal Pinax site, but after you logon
-a working FAQ tab is available and sub-tabs also appear when you view
-the FAQ page.
+The example app now has a convenient home page that appears as the default
+page. It has links to the available views.
 
-There are some saved FAQs in a fixture named initial_data.json that provide the example apps with some questions to view when you bring them up for the first time. These FAQs provide additional notes about installing and using django-faq.
+There are some saved FAQs in a fixture named ``example_data.json`` that provide
+the example apps with some questions to view when you bring them up for the
+first time. These FAQs provide additional notes about installing and using
+*django-faq*.
 
-I included an example site in the /example directory. You should be able to
-simply execute './manage.py syncdb' and then './manage.py runserver' and have
-the example site up and running. I assume your system has sqlite3 available -
-it is set as the default database with the DATABASE_NAME = 'faq.db'
+I included an example site in the ``./example_project`` directory. You should
+be able to simply execute ``./manage.py syncdb`` and then
+``./manage.py runserver`` and have the example site up and running. I assume
+your system has sqlite3 available - it is set as the default database in
+``settings.py``
 
 There is a stand-alone example site in the projects/example directory. to try it out:
 
 1. Install django-faq as per the Installation section above.
 
-2. Execute './manage.py syncdb' (This assumes that sqlite3 is available as it is set as the default database with the DATABASE_NAME = 'faq.db'.)
+2. Execute ``./manage.py syncdb`` (This assumes that *sqlite3* is available as it is set as the default database with the ``DATABASE_NAME = 'django-faq.db'``.)
 
-3. If you'd like to load some example data then execute ./manage.py loaddata example_data.json
+3. If you'd like to load some example data then execute ``./manage.py loaddata example_data.json``
 
-4. Execute './manage.py runserver' and you will have the example site up and running. The home page will have links to get to the available views as well as to the admin (assuming that you have the admin installed and it uses the "/admin/" utl.) 
+4. Execute ``./manage.py runserver`` and you will have the example site up and running. The home page will have links to get to the available views as well as to the admin.
 
 5. After logging into the admin you will notice an additional question appears in the FAQ. That question is "protected" and therefore not presented to non-authenticated users.
 
 6. The capability to submit an FAQ is available and works whether or not you are a logged in user. Note that a staff member will have to use the admin and review any submitted FAQs and clean them up and set them to active before they are viewable by the end user views.
-
-Pinax Example Site
-==================
-
-This area is a clone of a Pinax Basic Project with some small adjustments:
-
-1. 'faq' has already been added as one of the INSTALLED_APPS in settings.py
-
-2. An include for faq.urls has been added to urls.py
-
-3. A tab named FAQ has been added in templates/site_base.html.
-
-4. The templates directory includes a new directory named 'faq'. It includes a custom base.html file that adds the sub-tabs for the FAQ tab page into the Pinax tab system.
-
-To try out the Pinax example:
-
-1. Install the faq app from the django-faq distribution in the normal way.
-
-2. Download and install Pinax somewhere in your filesystem.
-
-3. Adjust PINAX_ROOT in the settings.py to point at your Pinax installation.
-
-4. Execute ./manage.py syncdb and then ./manage.py runserver and the app should come up.
-
-5. If you'd like to load some example data then execute ./manage.py loaddata example_data.json
-
-The home page that appears is the nominal Pinax home page. To get to the FAQ you can either:
-
-1. Edit your browser URL to point at localhost:8000/faq/
-
-2. Login to Pinax. After you are logged in, the FAQ tab appears. Select it. Viola!
-
