@@ -102,4 +102,4 @@ Requirements
 ============
 
 As this application makes use of class based generic views, it is dependent on
-*Django 1.3* or on *django-cbv** when using *Django 1.2*.
+*Django 1.3* or on *django-cbv* when using *Django 1.2*.
