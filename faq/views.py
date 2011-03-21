@@ -1,6 +1,13 @@
 from datetime import datetime
 
-from django.views.generic import ListView, DetailView, CreateView
+# Try to get the cbv classes from django, then from django-cbv for compatibility
+try:
+    from django.views.generic import ListView, DetailView, CreateView
+except ImportError:
+    from cbv.views.list import ListView
+    from cbv.views.detail import DetailView
+    from cbv.views.edit import CreateView
+
 from django.template.defaultfilters import slugify
 
 import enums
