@@ -1,4 +1,4 @@
-from haystack import indexes
+from haystack.indexes import SearchIndex, CharField
 from haystack.sites import site
 from django.utils.translation import ugettext_lazy as _
 from faq.models import Question
@@ -20,10 +20,10 @@ class SearchableFAQ(Question):
 	def get_absolute_url(self):
 		return "/faq/#{0}".format(self.slug)
 
-class FaqIndex(indexes.SearchIndex):
-	text = indexes.CharField(document=True, use_template=True)
-	question = indexes.CharField(model_attr="question")
-	answer = indexes.CharField(model_attr="answer")
+class FaqIndex(SearchIndex):
+	text = CharField(document=True, use_template=True)
+	question = CharField(model_attr="question")
+	answer = CharField(model_attr="answer")
 	
 	def get_queryset(self):
 		return SearchableFAQ.objects.filter(status = enums.STATUS_ACTIVE)
